@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - Prince Academy</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="left">Prince Academy</div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+      <div class="right" id="nav-links">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+          <li><a href="faculty.html"><i class="fas fa-users"></i> Faculty</a></li>
+          <li><a href="gallery.html"><i class="fas fa-image"></i> Gallery</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+      </div>
+      <button id="darkToggle" class="btn"><i class="fas fa-adjust"></i> Toggle Mode</button>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner" style="background-image: url('/Frontend/Images/Contact.jpg');">
+    <div class="overlay">
+      <h1>Contact Us</h1>
+      <p>Reach out to Prince Academy for any inquiries</p>
+    </div>
+  </section>
+
+  <!-- Contact Info & Form -->
+<section class="contact-section">
+  <div class="contact-info">
+    <h3>Address</h3>
+    <p>101, 1st Floor, Shree Hari Om Apt,<br>
+    Near St Mary School,<br> MumbraDevi Colony ,<br>
+    Diva (E) – 400612</p>
+
+    <h3>Email</h3>
+    <p><a href="mailto:PrinceAcademy.in@gmail.com">PrinceAcademy.in@gmail.com</a></p>
+
+    <h3>Phone</h3>
+    <p>7738530305, 9892650903</p>
+  </div>
+
+  <div class="contact-form">
+    <h3>Contact With Us</h3>
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="text" name="standard" placeholder="Standard" />
+      <input type="tel" name="number" placeholder="Phone" required />
+      <textarea name="message" rows="5" placeholder="Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      standard: e.target.standard.value,
+      number: e.target.number.value,
+      message: e.target.message.value
+    };
+
+    try {
+      let res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      let result = await res.json();
+      alert(result.message);
+
+      if (result.success) e.target.reset(); // reset form if success
+    } catch (err) {
+      alert("❌ Something went wrong: " + err.message);
+    }
+  });
+</script>
+
+  <!-- Branches -->
+  <section class="branches">
+    <h2>Our Branches</h2>
+    <div class="branch-list">
+      <div class="branch">
+        <h4>Diva East</h4>
+        <p>2nd Floor, Om Sai Apt,<br> Shlok Nagar</p>
+      </div>
+      <div class="branch">
+        <h4>Bhandup West</h4>
+        <p>Kasturi Plaza, Near LBS Road </p>
+      </div>
+      <div class="branch">
+        <h4>Diva East</h4>
+        <p>Mumbra Devi Colony , Near Transformer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer">
+      <div class="footer-section">
+        <h3>Prince Academy</h3>
+        <p>Power of Knowledge.</p>
+      </div>
+      <div class="footer-section">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="faculty.html"><i class="fas fa-users"></i> Faculty</a></li>
+          <li><a href="gallery.html"><i class="fas fa-image"></i> Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <ul>
+          <li><a href="#"><i class="fas fa-user-secret"></i> Privacy</a></li>
+          <li><a href="#"><i class="fas fa-file-alt"></i> Terms</a></li>
+          <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-rights">© 2025 Prince Academy | All Rights Reserved.</div>
+  </footer>
+<script src="app.js"></script>
+</body>
+</html>
