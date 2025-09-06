@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+body { font-family: Arial; background:#f4f6f8; margin:0; padding:0; }
+.container { width:90%; max-width:400px; margin:50px auto; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+h2{text-align:center;}
+input, select{width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:6px;}
+button{width:100%; padding:12px; background:#007bff; color:#fff; border:none; border-radius:6px; cursor:pointer;}
+button:hover{background:#0056b3;}
+p { text-align:center; margin: 10px 0; }
+p a { color:#007bff; text-decoration:none; font-weight:bold; }
+p a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Login</h2>
+  
+  <input type="email" id="email" placeholder="Email" required />
+  <input type="password" id="password" placeholder="Password" required />
+  <select id="role">
+    <option value="student">Student</option>
+    <option value="admin">Admin</option>
+  </select>
+  <button onclick="login()">Login</button>
+  
+  <!-- Links -->
+  <p>New user? <a href="register.html">Register here</a></p>
+  <p><a href="index.html">← Back to Home</a></p>
+</div>
+
+<script>
+async function login(){
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const role = document.getElementById("role").value;
+
+  const res = await fetch("/api/login", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({email,password,role})
+  });
+
+  const data = await res.json();
+
+  if(data.success){
+    localStorage.setItem("token", data.token);
+    if(role === "admin") location.href = "admin.html";
+    else location.href = "student.html";
+  } else {
+    alert(data.message);
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fees Payment</title>
+<style>
+/* Body & Header */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f9;
+}
+
+header {
+  background: #007BFF;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* Navbar - updated to light blue */
+nav {
+  background: #007BFF;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Fees Table */
+table.fees-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table.fees-table th, table.fees-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+table.fees-table th {
+  background: #007BFF;
+  color: white;
+  font-weight: bold;
+}
+
+table.fees-table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+table.fees-table tr:hover {
+  background: #e6f0ff;
+}
+
+/* Pay Fees Button */
+.btn-pay {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 25px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn-pay:hover {
+  background: #0056b3;
+}
+
+/* Payment Box */
+.payment-box {
+  display: none;
+  margin: 20px auto;
+  padding: 20px;
+  width: 350px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #007BFF;
+  background: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.payment-box img {
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+.payment-box p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.highlight {
+  color: #007BFF;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<header>Prince Academy - Fees Payment</header>
+<nav>
+  <a href="student.html">Dashboard</a> |
+  <a href="fees.html">Fees</a> ||
+  <a href="login.html" onclick="logout()">Logout</a>
+</nav>
+
+<div class="container">
+  <h2>Class-wise Fees Chart</h2>
+  <table class="fees-table">
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Monthly Fees (₹)</th>
+        <th>Quarterly Fees (₹)</th>
+        <th>Yearly Fees (₹)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1st</td>
+        <td>1500</td>
+        <td>4500</td>
+        <td>18000</td>
+      </tr>
+      <tr>
+        <td>2nd</td>
+        <td>1500</td>
+        <td>4500</td>
+        <td>18000</td>
+      </tr>
+      <tr>
+        <td>3rd</td>
+        <td>1600</td>
+        <td>4800</td>
+        <td>19200</td>
+      </tr>
+      <tr>
+        <td>4th</td>
+        <td>1600</td>
+        <td>4800</td>
+        <td>19200</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn-pay" id="payBtn">Pay Fees</button>
+</div>
+
+<!-- Payment Box -->
+<div id="paymentBox" class="payment-box">
+  <img src="qr-code.png" alt="QR Code for Payment">
+  <p>UPI ID: <span class="highlight">princeacademy@upi</span></p>
+  <p>Amount: <span class="highlight">₹5000</span></p>
+  <button class="btn-pay" onclick="closePayment()">Close</button>
+</div>
+
+<script>
+// Logout
+function logout() {
+  localStorage.removeItem("token");
+  location.href = "login.html";
+}
+
+// Show/Hide Payment Box
+const payBtn = document.getElementById("payBtn");
+const paymentBox = document.getElementById("paymentBox");
+
+payBtn.addEventListener("click", () => {
+  paymentBox.style.display = "block";
+});
+
+function closePayment() {
+  paymentBox.style.display = "none";
+}
+</script>
+
+</body>
+</html>

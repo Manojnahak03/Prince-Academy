@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav {
+  background: #0056b3;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Dashboard container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  gap: 20px;
+}
+
+/* Individual sections */
+.section {
+  background: #fff;
+  padding: 20px;
+  flex: 1;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.section h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #007bff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #f9f9f9;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-left: 4px solid #007bff;
+  border-radius: 5px;
+}
+
+li strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #0056b3;
+  font-size: 1.1em;
+}
+
+@media(max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>Prince Academy - Fees Payment</header>
+<nav>
+  <a href="student.html">Dashboard</a> |
+  <a href="fees.html">Fees</a> ||
+  <a href="login.html" onclick="logout()">Logout</a>
+</nav>
+
+<div class="container">
+  <div class="section">
+    <h3>Notices</h3>
+    <ul id="noticeList"></ul>
+  </div>
+
+  <div class="section">
+    <h3>Homework</h3>
+    <ul id="homeworkList"></ul>
+  </div>
+</div>
+
+<script>
+const token = localStorage.getItem("token");
+
+async function loadDashboard(){
+  const res = await fetch("/api/student/dashboard", {
+    headers: {"Authorization":"Bearer "+token}
+  });
+  const data = await res.json();
+  if(data.success){
+    const noticeList = document.getElementById("noticeList"); 
+    noticeList.innerHTML = "";
+    data.notices.forEach(n => {
+      const li = document.createElement("li"); 
+      li.innerHTML = `<strong>${n.title}</strong>${n.content}`; 
+      noticeList.appendChild(li);
+    });
+
+    const hwList = document.getElementById("homeworkList"); 
+    hwList.innerHTML = "";
+    data.homework.forEach(h => {
+      const li = document.createElement("li"); 
+      li.innerHTML = `<strong>${h.subject}</strong>${h.details} - Due: ${new Date(h.dueDate).toLocaleDateString()}`; 
+      hwList.appendChild(li);
+    });
+  } else {
+    alert("Failed to load dashboard. Please login again.");
+    location.href = "login.html";
+  }
+}
+
+function logout(){
+  localStorage.removeItem("token");
+  location.href = "login.html";
+}
+
+loadDashboard();
+</script>
+
+</body>
+</html>

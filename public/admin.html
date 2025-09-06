@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+<style>
+body { font-family: Arial; background:#f4f6f8; margin:0; padding:0; }
+.container { width:90%; max-width:800px; margin:auto; padding:20px; position:relative; }
+h2,h3{text-align:center;margin:20px 0;}
+form{background:#fff;padding:20px;margin:15px 0;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);}
+input, textarea{width:100%;padding:10px;margin:10px 0;border:1px solid #ccc;border-radius:6px;}
+button{background:#007bff;color:#fff;padding:12px 20px;border:none;border-radius:6px;cursor:pointer;}
+button:hover{background:#0056b3;}
+ul{list-style:none;padding:0;}
+li{background:#fff;padding:15px;margin:10px 0;border-radius:10px;box-shadow:0 3px 6px rgba(0,0,0,0.1);}
+li strong{display:block;color:#007bff;margin-bottom:5px;}
+.delete-btn{background:red;margin-left:10px;}
+/* Back button */
+.back-btn { 
+  position:absolute; 
+  top:20px; 
+  right:20px; 
+  background:#28a745; 
+  padding:10px 16px; 
+  border-radius:6px; 
+  text-decoration:none; 
+  color:#fff; 
+  font-weight:bold;
+}
+.back-btn:hover { background:#218838; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Back to Home button -->
+<a href="index.html" class="back-btn">← Back to Home</a>
+
+<h2>Admin Panel</h2>
+
+<h3>Upload Notice</h3>
+<form id="noticeForm">
+<input type="text" id="noticeTitle" placeholder="Title" required />
+<textarea id="noticeContent" placeholder="Content" required></textarea>
+<button type="submit">Upload Notice</button>
+</form>
+
+<h3>Upload Homework</h3>
+<form id="homeworkForm">
+<input type="text" id="hwSubject" placeholder="Subject" required />
+<textarea id="hwDetails" placeholder="Details" required></textarea>
+<input type="date" id="hwDueDate" required />
+<button type="submit">Upload Homework</button>
+</form>
+
+<h3>Existing Notices</h3>
+<ul id="noticeList"></ul>
+
+<h3>Existing Homework</h3>
+<ul id="homeworkList"></ul>
+</div>
+
+<script>
+const token = localStorage.getItem("token");
+
+async function loadAdminData(){
+  const res=await fetch("/api/admin/list",{headers:{"Authorization":"Bearer "+token}});
+  const data=await res.json();
+  if(data.success){
+    const noticeList=document.getElementById("noticeList"); noticeList.innerHTML="";
+    data.notices.forEach(n=>{
+      const li=document.createElement("li");
+      li.innerHTML=`<strong>${n.title}</strong>${n.content} <button class="delete-btn" onclick="deleteNotice('${n._id}')">Delete</button>`;
+      noticeList.appendChild(li);
+    });
+    const hwList=document.getElementById("homeworkList"); hwList.innerHTML="";
+    data.homework.forEach(h=>{
+      const li=document.createElement("li");
+      li.innerHTML=`<strong>${h.subject}</strong>${h.details} - Due: ${new Date(h.dueDate).toLocaleDateString()} <button class="delete-btn" onclick="deleteHomework('${h._id}')">Delete</button>`;
+      hwList.appendChild(li);
+    });
+  }
+}
+
+async function deleteNotice(id){ await fetch("/api/admin/notice/"+id,{method:"DELETE",headers:{"Authorization":"Bearer "+token}}); loadAdminData(); }
+async function deleteHomework(id){ await fetch("/api/admin/homework/"+id,{method:"DELETE",headers:{"Authorization":"Bearer "+token}}); loadAdminData(); }
+
+document.getElementById("noticeForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const res=await fetch("/api/admin/notice",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+token},body:JSON.stringify({title:document.getElementById("noticeTitle").value,content:document.getElementById("noticeContent").value})});
+  const data=await res.json(); alert(data.message); document.getElementById("noticeForm").reset(); loadAdminData();
+});
+
+document.getElementById("homeworkForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const res=await fetch("/api/admin/homework",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+token},body:JSON.stringify({subject:document.getElementById("hwSubject").value,details:document.getElementById("hwDetails").value,dueDate:document.getElementById("hwDueDate").value})});
+  const data=await res.json(); alert(data.message); document.getElementById("homeworkForm").reset(); loadAdminData();
+});
+
+loadAdminData();
+</script>
+</body>
+</html>

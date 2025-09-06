@@ -1,9 +1,31 @@
 {
+  "name": "prince-academy",
+  "version": "1.0.0",
+  "description": "Prince-Academy",
+  "main": "server.js",
+  "type": "module",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
     "express": "^5.1.0",
-    "mongoose": "^8.17.2",
-    "nodemailer": "^7.0.5"
-  }
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.0",
+    "nodemailer": "^7.0.6"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manojnahak03/Prince-Academy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manojnahak03/Prince-Academy/issues"
+  },
+  "homepage": "https://github.com/manojnahak03/Prince-Academy#readme"
 }

@@ -1,3 +1,4 @@
+/* ================== RESET ================== */
 * {
   margin: 0;
   padding: 0;
@@ -8,10 +9,16 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: #ffffff;
   color: #1a1a1a;
+  line-height: 1.6;
 }
 
-/* NavBar Css */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
+/* ================== NAVBAR ================== */
 nav {
   display: flex;
   justify-content: space-between;
@@ -20,7 +27,6 @@ nav {
   background-color: #151269;
   color: white;
   flex-wrap: wrap;
-  position: relative;
 }
 
 .left {
@@ -45,75 +51,192 @@ nav {
   color: #fab01d;
 }
 
-.btn {
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(to right, #6a11cb, #2575fc);
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  background: linear-gradient(to right, #5a0ced, #1e90ff);
-  transform: scale(1.05);
-}
-
 .hamburger {
   display: none;
   font-size: 1.8rem;
   cursor: pointer;
 }
 
-/* === Hero Section === */
-.hero {
-  padding: 60px 20px;
-  background-color: #f4f4f4;
+/* Buttons */
+.btn,
+.auth-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn:hover,
+.auth-btn:hover {
+  background: linear-gradient(to right, #5a0ced, #1e90ff);
+  transform: scale(1.05);
+}
+
+/* ================== HERO BANNERS ================== */
+.hero-banner {
+  background-size: cover;
+  background-position: center;
+  min-height: 250px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(21, 18, 105, 0.6);
+  z-index: 0;
+}
+
+.hero-banner .overlay {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-banner h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin-bottom: 10px;
+}
+
+.hero-banner p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #f0f0f0;
+}
+
+/* ================== SECTIONS ================== */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 2rem 0 1rem;
+  color: #151269;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  color: #151269;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  font-size: 1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ================== CARDS (Home/About/Fees/Faculty/Success) ================== */
+.card-grid,
+.course-list,
+.testimonial-grid,
+.success-cards,
+.portfolio-container,
+.branch-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card,
+.course-card,
+.testimonial-card,
+.success-card,
+.branch,
+.portfolio-item {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  flex: 1 1 calc(33.333% - 20px);
+  max-width: 350px;
+  padding: 20px;
+  transition: transform 0.3s ease;
   text-align: center;
 }
 
-.hero-text h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+.card:hover,
+.course-card:hover,
+.testimonial-card:hover,
+.success-card:hover,
+.branch:hover,
+.portfolio-item:hover {
+  transform: translateY(-5px);
 }
 
-.hero-text p {
+.card img,
+.course-img-wrapper img,
+.portfolio-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+/* ================== ABOUT PAGE ================== */
+/* Our Mission & Success Cards */
+.success-card h4,
+.course-card h4 {
   font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #151269;
+}
+
+.success-card p,
+.course-card p {
+  font-size: 0.95rem;
   color: #555;
 }
 
-.highlight {
-  color: #6a0dad;
-  font-weight: 700;
+/* ================== OUR STUDENTS SAY ================== */
+.testimonial-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 2px solid #fab01d;
 }
 
-/* === Dark Mode === */
-.dark-mode {
-  background-color: #121212;
-  color: #f1f1f1;
+/* .testimonial-card h4 {
+  margin: 10px 0 5px;
+  font-size: 1rem;
+  color: #151269;
+  font-weight: 600;
+} */
+
+.testimonial-card p {
+  font-size: 0.9rem;
+  color: #555;
 }
 
-.dark-mode nav {
-  background-color: #000000;
+.center{
+  padding-left: 45%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
-.dark-mode .hero {
-  background-color: #1e1e1e;
-}
-
-.dark-mode a {
-  color: #ddd;
-}
-
-/* === Contact Section === */
+/* ================== CONTACT PAGE ================== */
 .contact-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 60px 40px;
+  gap: 30px;
+  padding: 60px 20px;
 }
 
 .contact-info,
@@ -128,712 +251,196 @@ nav {
 .contact-info h3,
 .contact-form h3 {
   color: #151269;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
-.contact-info p {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-.contact-info a {
-  color: #ff6600;
-  text-decoration: none;
-}
-
-.contact-form form,
-form {
+.contact-form form {
   display: flex;
   flex-direction: column;
 }
 
-.contact-form input,
-.contact-form textarea,
-form input,
-form textarea {
+input,
+textarea,
+select {
   padding: 12px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: inherit;
 }
 
-form textarea {
+textarea {
   resize: vertical;
 }
 
-.contact-form button,
-form button {
-  background-color: #ff6600;
-  color: white;
-  border: none;
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-form button:hover {
-  background-color: #e65c00;
-}
-
-/* === Branches Section === */
-.branches {
-  margin: 50px auto;
-  padding: 30px 20px;
-  background-color: #f9f9f9;
-  text-align: center;
-}
-
-.branches h2 {
-  font-size: 2rem;
-  color: #6a11cb;
-  margin-bottom: 20px;
-}
-
+/* Branch cards in Contact page */
 .branch-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-}
-
-.branch {
-  background-color: white;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  flex: 1 1 250px;
-  max-width: 300px;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.branch:hover {
-  transform: translateY(-5px);
-}
-
-.branch h4 {
-  color: #ff6600;
-  margin-bottom: 10px;
-}
-
-/* === Banner Image and Overlay === */
-.contact-banner {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-}
-
-.contact-banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(3px) brightness(0.8);
-}
-
-.banner-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-}
-
-.banner-text h1 {
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.banner-text p {
-  font-size: 1.2rem;
-  color: #f0f0f0;
-}
-
-/* === Hero Banner === */
-.hero-banner {
-  background-image: url('/Images/Contact.jpg');
-  background-size: cover;        /* Maintain fill */
-  background-repeat: no-repeat;
-  background-position: center;   /* Center the subject */
-  height: 250px;                 /* You can adjust this */
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-banner::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(21, 18, 105, 0.6); /* Dark overlay */
-  z-index: 0;
-}
-
-.hero-banner .overlay {
-  position: relative;
-  z-index: 1;
-  color: white;
-  text-align: center;
-}
-
-.hero-banner h1 {
-  font-size: 2.8rem;
-  margin-bottom: 10px;
-}
-
-.hero-banner p {
-  font-size: 1.1rem;
-  color: #eee;
-}
-
-.hero-section {
-  background: url('About-us.jpg') no-repeat center/cover;
-  padding: 100px 20px;
-  text-align: center;
-  color: #fff;
-}
-
-.hero-section .container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero-section h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.hero-section p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.hero-section .btn {
-  padding: 0.8rem 1.5rem;
-  background: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-/* Gallery Section */
-
-.section-title {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.2rem;
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.portfolio-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.portfolio-item {
-  flex: 0 0 32%;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover {
-  transform: scale(1.02);
-}
-
-.portfolio-item img {
-  width: 100%;
-  height: auto;
-  /* Maintain original height */
-  display: block;
-}
-
-.portfolio-item h4 {
-  padding: 10px 5px;
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .portfolio-item {
-    flex: 0 0 48%;
-    /* 2 items per row */
-  }
-}
-
-@media (max-width: 600px) {
-  .portfolio-item {
-    flex: 0 0 100%;
-    /* 1 item per row */
-  }
-}
-
-@media (max-width: 500px) {
-  .hero-banner {
-    height: 180px;
-  }
-
-  .hero-banner h1 {
-    font-size: 2rem;
-  }
-
-  .hero-banner p {
-    font-size: 0.95rem;
-  }
-}
-
-/* ========== Container ========== */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-
-/*  Home Page  */
-.why-us-section {
-  padding: 60px 20px;
-  background-color: #f9f9f9;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.section-header h2 {
-  font-size: 2.4rem;
-  color: #151269;
-  margin-bottom: 10px;
-}
-
-.section-header p {
-  font-size: 1rem;
-  color: #666;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Card Style in Home Page  */
-.card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-/* ========== Card Style ========== */
-.card {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  flex: 1 1 calc(33.333% - 20px);
-  max-width: 350px;
-  padding: 20px;
-  transition: transform 0.3s ease;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  width: 100%;
-}
-
-.card h3 {
-  font-size: 1.2rem;
-  color: #151269;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* ========== Hero Banner ========== */
-.hero-banner {
-  background: url('/Images/Banner.jpg') no-repeat center/cover;
-  min-height: 300px; /* Use min-height instead of fixed height */
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  text-align: center;
-  color: #fff;
-}
-
-.hero-banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
-  z-index: 0;
-}
-
-.hero-banner .overlay {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  padding: 0 20px;
-}
-
-.hero-banner h1 {
-  font-size: clamp(1.8rem, 5vw, 3rem); /* Responsive scaling */
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.hero-banner p {
-  font-size: clamp(1rem, 2.5vw, 1.2rem); /* Responsive scaling */
-  color: #f0f0f0;
-}
-
-
-/* ========== Responsive Styles ========== */
-
-/* Tablets */
-@media (max-width: 992px) {
-  .card {
-    flex: 1 1 calc(50% - 20px);
-  }
-}
-
-/* Mobile (small devices) */
-@media (max-width: 600px) {
-  .card {
-    flex: 1 1 100%;
-  }
-
-  .section-header h2 {
-    font-size: 1.8rem;
-  }
-
-  .hero-banner h1 {
-    font-size: 2rem;
-  }
-
-  .hero-banner p {
-    font-size: 1rem;
-  }
-} */
-
-
-
-/* About Page  */
-.courses-section {
-  padding: 60px 20px;
-  background-color: #f4f7fc;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 50px;
-  color: #1e1e1e;
-}
-
-/* Course grid */
-.course-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-
-/* Course card */
-.course-card {
-  flex: 0 1 calc(33.333% - 30px);
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease;
-}
-
-.course-card:hover {
-  transform: translateY(-6px);
-}
-
-/* Image styling */
-.course-img-wrapper img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Course content */
-.course-content {
-  padding: 20px;
-  text-align: center;
-}
-
-.course-content h3 {
-  font-size: 20px;
-  color: #004aad;
-  margin-bottom: 10px;
-}
-
-.course-subtext {
-  font-size: 15px;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-/* Buttons */
-.course-btn {
-  background-color: #004aad;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
-  margin: 0 auto 15px auto;
-  display: block;
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.course-btn a {
-  color: white;
-  text-decoration: none;
-}
-
-.course-btn span {
-  display: block;
-  font-size: 13px;
-  margin-top: 5px;
-  color: #dcdcdc;
-}
-
-/* Learn More link */
-.course-link a {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: #f97316;
-  color: white;
-  text-decoration: none;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-
-.course-link a:hover {
-  background-color: #ea580c;
-}
-
-/* Responsive behavior */
-@media (max-width: 992px) {
-  .course-card {
-    flex: 0 1 calc(50% - 30px);
-  }
-}
-
-@media (max-width: 600px) {
-  .course-card {
-    flex: 0 1 100%;
-  }
-}
-
-/*What Out Student Say*/
-
-/* Mission and Success Code Section */
-.mission-success-section {
-  background-color: #ffffff;
-  padding: 60px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.mission-container,
-.success-code-container {
-  max-width: 1100px;
-  margin: 0 auto 60px auto;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #004aad;
-  margin-bottom: 25px;
-}
-
-.mission-text {
-  font-size: 18px;
-  color: #444;
-  line-height: 1.6;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* Success Code Cards */
-.success-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
   margin-top: 30px;
 }
 
-.success-card {
-  background-color: #f4f7fc;
-  border-radius: 12px;
-  padding: 30px 20px;
-  flex: 0 1 calc(25% - 30px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+.branch {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1 1 calc(33.333% - 20px);
+  max-width: 300px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-.success-card:hover {
-  transform: translateY(-5px);
-}
-
-.icon-circle {
-  font-size: 32px;
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 15px auto;
-  background-color: #004aad;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.success-card h3 {
-  font-size: 18px;
-  color: #222;
+.branch h4 {
+  color: #151269;
   margin-bottom: 10px;
 }
 
-.success-card p {
-  font-size: 14px;
+.branch p {
+  font-size: 0.9rem;
   color: #555;
-  line-height: 1.5;
 }
 
-/*Student Success*/
+/* ================== AUTH PAGES ================== */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  padding: 20px;
+}
 
-.testimonial-section {
-  background-color: #f9f9f9;
-  padding: 60px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.auth-box {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
   text-align: center;
 }
 
-.section-title {
-  font-size: 32px;
-  color: #004aad;
-  font-weight: 700;
-  margin-bottom: 40px;
+.auth-box h2 {
+  margin-bottom: 20px;
+  color: #151269;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
-.testimonial-category h3 {
-  font-size: 24px;
-  color: #222;
-  margin-top: 40px;
-  margin-bottom: 25px;
+.auth-box form {
+  display: flex;
+  flex-direction: column;
 }
 
-.testimonial-grid {
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  font-size: 1rem;
+  padding: 12px;
+}
+
+/* ================== STUDENT DASHBOARD NOTICES & HOMEWORK ================== */
+.dashboard {
+  display: flex;
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.dashboard .section {
+  margin-left: 80px;
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  min-height: 300px;
+}
+
+.dashboard .section h2 {
+  color: #151269;
+  margin-bottom: 15px;
+}
+
+.dashboard ul {
+  list-style: none;
+}
+
+.dashboard ul li {
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+  border-left: 5px solid #2575fc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.dashboard ul li:last-child {
+  margin-bottom: 0;
+}
+/* ================== FOOTER ================== */
+footer {
+  background-color: #16213e;
+  color: #ccc;
+  padding: 30px 20px 10px;
+}
+
+.footer {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
+  justify-content: space-evenly;
+  gap: 20px;
 }
 
-.testimonial-card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-  padding: 25px 20px;
-  max-width: 300px;
-  flex: 0 1 calc(33.333% - 30px);
-  transition: transform 0.3s ease;
-  text-align: left;
+.footer-section h3 {
+  color: #fcbf49;
+  margin-bottom: 10px;
 }
 
-.testimonial-card:hover {
-  transform: translateY(-5px);
+.footer-section ul {
+  list-style: none;
 }
 
-.testimonial-text {
-  font-size: 15px;
-  color: #444;
-  margin-bottom: 20px;
-  line-height: 1.5;
+.footer-section ul li {
+  margin: 8px 0;
 }
 
-.student-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  color: #666;
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
 }
 
-.student-info img {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #004aad;
+.footer-section ul li a:hover {
+  color: #fcbf49;
 }
 
-.student-info {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 14px;
-  color: #444;
-  margin-top: 10px;
+.footer-rights {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 0.9rem;
+  background-color: #0f0f1a;
 }
 
-.student-info img {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #004aad;
+/* ================== RESPONSIVE ================== */
+@media (max-width: 992px) {
+  .card,
+  .course-card,
+  .testimonial-card,
+  .success-card,
+  .branch,
+  .portfolio-item {
+    flex: 1 1 calc(50% - 20px);
+  }
+  .dashboard .section {
+    flex: 1 1 100%;
+  }
 }
 
-/* === Responsive Design For Side Humburger === */
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .hamburger {
     display: block;
   }
@@ -856,12 +463,9 @@ form button:hover {
     padding: 20px 0;
   }
 
-  .btn {
-    margin-top: 10px;
-  }
-
-  .hero-text h1 {
-    font-size: 2rem;
+  .contact-section,
+  .dashboard {
+    flex-direction: column;
   }
 
   .footer {
@@ -869,66 +473,32 @@ form button:hover {
     align-items: center;
     text-align: center;
   }
+}
 
-  .contact-section {
-    flex-direction: column;
+@media (max-width: 600px) {
+  .card,
+  .course-card,
+  .testimonial-card,
+  .success-card,
+  .branch,
+  .portfolio-item {
+    flex: 1 1 100%;
   }
 
-  .branch-list {
-    flex-direction: column;
-    align-items: center;
+  .hero-banner h1 {
+    font-size: 1.8rem;
   }
 
-  .banner-text h1 {
-    font-size: 2rem;
-  }
-
-  .banner-text p {
+  .hero-banner p {
     font-size: 1rem;
   }
-}
 
-/* === Footer === */
+  .auth-box {
+    padding: 30px 20px;
+  }
 
-footer {
-  background-color: #16213e;
-  color: #ccc;
-  padding: 30px 20px 10px;
-}
-
-.footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 20px;
-}
-
-.footer-section h3 {
-  color: #fcbf49;
-  margin-bottom: 10px;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin: 8px 0;
-}
-
-.footer-section ul li a {
-  color: #ccc;
-  text-decoration: none;
-}
-
-.footer-section ul li a:hover {
-  color: #fcbf49;
-}
-
-.footer-rights {
-  text-align: center;
-  padding-top: 20px;
-  font-size: 0.9rem;
-  background-color: #0f0f1a;
+  .testimonial-card img {
+    width: 60px;
+    height: 60px;
+  }
 }
