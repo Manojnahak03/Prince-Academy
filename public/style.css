@@ -140,12 +140,12 @@ nav {
   margin: 0 auto;
 }
 
-/* ================== CARDS (Home/About/Fees/Faculty/Success) ================== */
-.card-grid,
-.course-list,
+/* ---------- CARDS (Home/About/Fees/Faculty/Success)--------- */
+.card-grid, /*----Home Page -------------*/
+.course-list, /*--------About page ke 3 cards-------------- */
 .testimonial-grid,
 .success-cards,
-.portfolio-container,
+.portfolio-container, /*--------Faculty Page ke Cards ke liye-----*/
 .branch-list {
   display: flex;
   flex-wrap: wrap;
@@ -188,21 +188,6 @@ nav {
   object-fit: cover;
 }
 
-/* ================== ABOUT PAGE ================== */
-/* Our Mission & Success Cards */
-.success-card h4,
-.course-card h4 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: #151269;
-}
-
-.success-card p,
-.course-card p {
-  font-size: 0.95rem;
-  color: #555;
-}
-
 /* ================== OUR STUDENTS SAY ================== */
 .testimonial-card img {
   width: 80px;
@@ -212,13 +197,6 @@ nav {
   margin-bottom: 15px;
   border: 2px solid #fab01d;
 }
-
-/* .testimonial-card h4 {
-  margin: 10px 0 5px;
-  font-size: 1rem;
-  color: #151269;
-  font-weight: 600;
-} */
 
 .testimonial-card p {
   font-size: 0.9rem;
@@ -275,23 +253,6 @@ textarea {
 }
 
 /* Branch cards in Contact page */
-.branch-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.branch {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  flex: 1 1 calc(33.333% - 20px);
-  max-width: 300px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
 
 .branch h4 {
   color: #151269;
