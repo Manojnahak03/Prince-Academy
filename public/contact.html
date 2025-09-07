@@ -6,6 +6,7 @@
   <title>Contact - Prince Academy</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -16,12 +17,12 @@
       <div class="hamburger" id="hamburger">&#9776;</div>
       <div class="right" id="nav-links">
         <ul>
-        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-        <li><a href="faculty.html"><i class="fas fa-users"></i> Faculty</a></li>
-        <li><a href="gallery.html"><i class="fas fa-image"></i> Gallery</a></li>
-        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-      </ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+          <li><a href="faculty.html"><i class="fas fa-users"></i> Faculty</a></li>
+          <li><a href="gallery.html"><i class="fas fa-image"></i> Gallery</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
       </div>
       <button id="darkToggle" class="btn"><i class="fas fa-adjust"></i> Toggle Mode</button>
     </nav>
@@ -36,61 +37,61 @@
   </section>
 
   <!-- Contact Info & Form -->
-<section class="contact-section">
-  <div class="contact-info">
-    <h3>Address</h3>
-    <p>101, 1st Floor, Shree Hari Om Apt,<br>
-    Near St Mary School,<br> MumbraDevi Colony ,<br>
-    Diva (E) – 400612</p>
+  <section class="contact-section">
+    <div class="contact-info">
+      <h3>Address</h3>
+      <p>101, 1st Floor, Shree Hari Om Apt,<br>
+      Near St Mary School,<br> MumbraDevi Colony ,<br>
+      Diva (E) – 400612</p>
 
-    <h3>Email</h3>
-    <p><a href="mailto:PrinceAcademy.in@gmail.com">PrinceAcademy.in@gmail.com</a></p>
+      <h3>Email</h3>
+      <p><a href="mailto:PrinceAcademy.in@gmail.com">PrinceAcademy.in@gmail.com</a></p>
 
-    <h3>Phone</h3>
-    <p>7738530305, 9892650903</p>
-  </div>
+      <h3>Phone</h3>
+      <p>7738530305, 9892650903</p>
+    </div>
 
-  <div class="contact-form">
-    <h3>Contact With Us</h3>
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="Name" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="text" name="standard" placeholder="Standard" />
-      <input type="tel" name="number" placeholder="Phone" required />
-      <textarea name="message" rows="5" placeholder="Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-</section>
+    <div class="contact-form">
+      <h3>Contact With Us</h3>
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="standard" placeholder="Standard" />
+        <input type="tel" name="number" placeholder="Phone" required />
+        <textarea name="message" rows="5" placeholder="Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
 
-<script>
-  document.getElementById("contactForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
 
-    const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      standard: e.target.standard.value,
-      number: e.target.number.value,
-      message: e.target.message.value
-    };
+      const formData = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        standard: e.target.standard.value,
+        number: e.target.number.value,
+        message: e.target.message.value
+      };
 
-    try {
-      let res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
+      try {
+        let res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
 
-      let result = await res.json();
-      alert(result.message);
+        let result = await res.json();
+        alert(result.message);
 
-      if (result.success) e.target.reset(); // reset form if success
-    } catch (err) {
-      alert("❌ Something went wrong: " + err.message);
-    }
-  });
-</script>
+        if (result.success) e.target.reset(); // reset form if success
+      } catch (err) {
+        alert("❌ Something went wrong: " + err.message);
+      }
+    });
+  </script>
 
   <!-- Branches -->
   <section class="branches">
@@ -111,30 +112,44 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer">
-      <div class="footer-section">
-        <h3>Prince Academy</h3>
-        <p>Power of Knowledge.</p>
-      </div>
-      <div class="footer-section">
-        <ul>
-          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="faculty.html"><i class="fas fa-users"></i> Faculty</a></li>
-          <li><a href="gallery.html"><i class="fas fa-image"></i> Gallery</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <ul>
-          <li><a href="#"><i class="fas fa-user-secret"></i> Privacy</a></li>
-          <li><a href="#"><i class="fas fa-file-alt"></i> Terms</a></li>
-          <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
-        </ul>
-      </div>
+  <!-- ✅ Updated Footer for All Pages -->
+<footer>
+  <div class="footer">
+    <div class="footer-section">
+      <h3>Prince Academy</h3>
+      <p>Power of Knowledge.</p>
     </div>
-    <div class="footer-rights">© 2025 Prince Academy | All Rights Reserved.</div>
-  </footer>
-<script src="app.js"></script>
+    <div class="footer-section">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="faculty.html"><i class="fas fa-users"></i> Faculty</a></li>
+        <li><a href="gallery.html"><i class="fas fa-image"></i> Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <ul>
+        <li>
+          <a href="https://www.instagram.com/45manoj_?igsh=ZTd1eG90djF2N2ps" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/share/1GM1MRYeHx/" target="_blank">
+            <i class="fab fa-facebook"></i> Facebook
+          </a>
+        </li>
+        <li>
+          <a href="https://youtube.com/shorts/V8m8equTo3c?si=5OIzZefbMvf5VpB-" target="_blank">
+            <i class="fab fa-youtube"></i> YouTube
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-rights">© 2025 Prince Academy | All Rights Reserved.</div>
+</footer>
+
+
+  <script src="script.js"></script>
 </body>
 </html>

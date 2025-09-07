@@ -1,7 +1,12 @@
 // Hamburger toggle
-document.getElementById("hamburger").addEventListener("click", () => {
-  document.getElementById("nav-links").classList.toggle("active");
+// Hamburger toggle
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
 });
+
 
 // ==========================
 // SHOW/HIDE PAYMENT BOX
